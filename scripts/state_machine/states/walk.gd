@@ -9,7 +9,7 @@ func _on_physics_process(_delta: float) -> void:
 	change_dir()
 	change_anim()
 	
-	entity.velocity = GameInputEvents.get_move_input() * speed
+	entity.velocity = dir * speed
 	entity.move_and_slide()
 
 func _on_next_transitions() -> void:
