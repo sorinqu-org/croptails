@@ -1,3 +1,4 @@
+class_name Chopping
 extends AnimHandler
 
 func _on_process(_delta: float) -> void:
@@ -6,17 +7,15 @@ func _on_process(_delta: float) -> void:
 func _on_physics_process(_delta: float) -> void:
 	pass
 
+func _on_next_transitions() -> void:
+	AH_on_next_transitions()
+
 func _on_enter() -> void:
 	if first_param != null:
 		dir = first_param
 	change_anim()
 
-func _on_next_transitions() -> void:
-	if GameInputEvents.is_move():
-		transition.emit("Walk", null, null)
-
-	if player.current_tool == player.Tools.Axe && GameInputEvents.get_hit_input():
-		transition.emit("Chopping", dir, null)
+	isTool = true
 
 func _on_exit() -> void:
 	AH_on_exit()

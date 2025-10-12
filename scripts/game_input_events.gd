@@ -1,5 +1,9 @@
 class_name GameInputEvents
 
+# FIXME: Change tools system
+@warning_ignore("unused_signal")
+signal hit_pressed
+
 static func get_move_input() -> Vector2i:
 	var input_vector = Vector2i.ZERO
 
@@ -16,3 +20,7 @@ static func get_move_input() -> Vector2i:
 
 static func is_move() -> bool:
 	return get_move_input() != Vector2i.ZERO
+
+# FIXME: Change tools system
+static func get_hit_input() -> bool:
+	return Input.is_action_just_pressed("hit")

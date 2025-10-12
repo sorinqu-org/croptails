@@ -1,4 +1,4 @@
-extends BaseMoveHandler
+extends AnimHandler
 
 @export var speed: int = 50
 
@@ -21,4 +21,4 @@ func _on_enter() -> void:
 	pass
 
 func _on_exit() -> void:
-	pass
+	AH_on_exit()

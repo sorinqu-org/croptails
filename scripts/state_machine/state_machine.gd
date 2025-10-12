@@ -1,3 +1,5 @@
+#FIXME: Create NORMAL state machine
+
 class_name StateMachine
 extends Node
 
@@ -10,10 +12,10 @@ var current_state: State
 var current_state_name: String
 
 func _ready() -> void:
+
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()] = child
-			print(child.name)
 			child.transition.connect(transition_to)
 			child.entity = entity
 			child.animated_sprite = animated_sprite
