@@ -3,6 +3,9 @@ extends State
 
 @export var animations: Dictionary[String, String]
 
+var dir: Vector2i
+var not_zero_dir: Vector2i 
+
 func _on_process(_delta: float) -> void:
 	pass
 
@@ -19,8 +22,12 @@ func _on_exit() -> void:
 	pass
 
 func change_dir() -> void:
-	var input_dir: Vector2i = GameInputEvents.get_move_input()
-	match input_dir:
+	if dir != Vector2i.ZERO:
+		not_zero_dir = dir
+	dir = GameInputEvents.get_move_input()
+
+func change_anim() -> void:
+	match dir:
 		Vector2i.LEFT:
 			animated_sprite.play(animations["left"])
 		Vector2i.RIGHT:
@@ -30,6 +37,5 @@ func change_dir() -> void:
 		Vector2i.DOWN:
 			animated_sprite.play(animations["front"])
 		_:
-			animated_sprite.play(animations["front"])
-	
+			animated_sprite.play(animations["front"])	
 

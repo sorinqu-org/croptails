@@ -34,7 +34,7 @@ func _physics_process(delta: float) -> void:
 		current_state._on_next_transitions()
 
 
-func transition_to(state_name : String) -> void:
+func transition_to(state_name : String, first_param, second_param) -> void:
 	if state_name == current_state.name.to_lower():
 		return
 	
@@ -45,6 +45,9 @@ func transition_to(state_name : String) -> void:
 	
 	if current_state:
 		current_state._on_exit()
+	
+	new_state.first_param = first_param
+	new_state.second_param = second_param
 	
 	new_state._on_enter()
 

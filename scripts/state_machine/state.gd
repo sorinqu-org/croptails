@@ -4,6 +4,9 @@ extends Node
 var animated_sprite: AnimatedSprite2D
 var entity: CharacterBody2D
 
+var first_param
+var second_param
+
 @warning_ignore("unused_signal")
 signal transition
 
