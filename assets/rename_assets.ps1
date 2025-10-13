@@ -1,7 +1,7 @@
 # PowerShell script to rename files in assets/ to snake_case convention
 # Run from project root: powershell -ExecutionPolicy Bypass -File rename_assets.ps1
 
-$assetsPath = "assets"
+$assetsPath = "ui"
 
 function ConvertToSnakeCase {
     param([string]$fullName)

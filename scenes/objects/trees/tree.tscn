@@ -1,0 +1,80 @@
+[gd_scene load_steps=14 format=3 uid="uid://uafu7foy3x4q"]
+
+[ext_resource type="Texture2D" uid="uid://ooxhg638aa2h" path="res://assets/gameplay/objects/basic_grass_biom_things.png" id="1_y5kx5"]
+[ext_resource type="Script" uid="uid://c4ameihmx33h1" path="res://scripts/objects/tree.gd" id="2_p2fd6"]
+[ext_resource type="PackedScene" uid="uid://dckr1swo3lbpl" path="res://scenes/components/hurt.tscn" id="2_tsjaw"]
+[ext_resource type="PackedScene" uid="uid://bdnysaag5jqin" path="res://scenes/objects/trees/log.tscn" id="3_3c4uq"]
+[ext_resource type="PackedScene" uid="uid://cdue5mt8igwsy" path="res://scenes/components/damage.tscn" id="3_ouccj"]
+[ext_resource type="Texture2D" uid="uid://btb7hs3uunbp5" path="res://assets/ui/Sprite sheets/UI Settings Buttons.png" id="5_m3r6k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsjaw"]
+atlas = ExtResource("1_y5kx5")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3c4uq"]
+radius = 4.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ouccj"]
+size = Vector2(8, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3c4uq"]
+atlas = ExtResource("5_m3r6k")
+region = Rect2(2, 121, 28, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gum2g"]
+texture = SubResource("AtlasTexture_3c4uq")
+axis_stretch_horizontal = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3r6k"]
+atlas = ExtResource("5_m3r6k")
+region = Rect2(34, 121, 28, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3c4uq"]
+texture = SubResource("AtlasTexture_m3r6k")
+axis_stretch_horizontal = 1
+
+[node name="Tree" type="Sprite2D"]
+position = Vector2(0, -11)
+texture = SubResource("AtlasTexture_tsjaw")
+script = ExtResource("2_p2fd6")
+log_scene = ExtResource("3_3c4uq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_3c4uq")
+
+[node name="Hurt" parent="." instance=ExtResource("2_tsjaw")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurt"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_ouccj")
+debug_color = Color(0.89669967, 0.34279758, 1, 0.41960785)
+
+[node name="Damage" parent="." instance=ExtResource("3_ouccj")]
+
+[node name="Control" type="Control" parent="."]
+z_index = 1
+y_sort_enabled = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -20.0
+offset_top = -33.0
+offset_right = 20.0
+offset_bottom = -10.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="TreeHp" type="ProgressBar" parent="Control"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 8.0
+offset_right = 29.0
+offset_bottom = 15.0
+theme_override_styles/background = SubResource("StyleBoxTexture_gum2g")
+theme_override_styles/fill = SubResource("StyleBoxTexture_3c4uq")
+step = 1.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
