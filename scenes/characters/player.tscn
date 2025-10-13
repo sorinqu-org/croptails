@@ -1,12 +1,13 @@
-[gd_scene load_steps=50 format=3 uid="uid://dlbu38rxtt0po"]
+[gd_scene load_steps=51 format=3 uid="uid://dlbu38rxtt0po"]
 
 [ext_resource type="Script" uid="uid://dnett1g7e2dsk" path="res://scripts/player/player.gd" id="1_6eyoc"]
 [ext_resource type="Texture2D" uid="uid://bmarq4qqx6143" path="res://assets/gameplay/characters/basic_charakter_spritesheet.png" id="1_rp718"]
 [ext_resource type="Texture2D" uid="uid://dviiv6t6y5ifi" path="res://assets/gameplay/characters/basic_charakter_actions.png" id="2_yewv4"]
 [ext_resource type="Script" uid="uid://otgoaba13p3y" path="res://scripts/state_machine/state_machine.gd" id="3_dyp2m"]
-[ext_resource type="Script" uid="uid://c2pgc13fp2g14" path="res://scripts/state_machine/states/idle.gd" id="4_atpat"]
-[ext_resource type="Script" uid="uid://dtoeyfhs2nkbh" path="res://scripts/state_machine/states/walk.gd" id="5_atpat"]
-[ext_resource type="Script" uid="uid://bcds78q5rslrl" path="res://scripts/state_machine/states/chopping.gd" id="7_eojnx"]
+[ext_resource type="Script" uid="uid://g3k2s45cyct8" path="res://scripts/state_machine/states/player/idle.gd" id="5_eojnx"]
+[ext_resource type="Script" uid="uid://b4pbl63tawo0y" path="res://scripts/state_machine/states/anim_handler.gd" id="6_qgnko"]
+[ext_resource type="Script" uid="uid://cd5akhismud23" path="res://scripts/state_machine/states/player/walk.gd" id="7_7vyk4"]
+[ext_resource type="Script" uid="uid://bpif45vag0chf" path="res://scripts/state_machine/states/player/tool.gd" id="8_eojnx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rpnd8"]
 atlas = ExtResource("2_yewv4")
@@ -265,7 +266,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7vyk4")
 }],
-"loop": true,
+"loop": false,
 "name": &"tilling_back",
 "speed": 3.0
 }, {
@@ -276,7 +277,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jk2m4")
 }],
-"loop": true,
+"loop": false,
 "name": &"tilling_front",
 "speed": 3.0
 }, {
@@ -287,7 +288,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k4v7y")
 }],
-"loop": true,
+"loop": false,
 "name": &"tilling_left",
 "speed": 3.0
 }, {
@@ -298,7 +299,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_g66nw")
 }],
-"loop": true,
+"loop": false,
 "name": &"tilling_right",
 "speed": 3.0
 }, {
@@ -353,7 +354,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_o6auj")
 }],
-"loop": true,
+"loop": false,
 "name": &"watering_back",
 "speed": 3.0
 }, {
@@ -364,7 +365,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tswxa")
 }],
-"loop": true,
+"loop": false,
 "name": &"watering_front",
 "speed": 3.0
 }, {
@@ -375,7 +376,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_yhyq5")
 }],
-"loop": true,
+"loop": false,
 "name": &"watering_left",
 "speed": 3.0
 }, {
@@ -386,15 +387,16 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vwwfy")
 }],
-"loop": true,
+"loop": false,
 "name": &"watering_right",
 "speed": 3.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yewv4"]
-radius = 9.0
+radius = 5.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_6eyoc")
 
 [node name="PlayerAnim" type="AnimatedSprite2D" parent="."]
@@ -404,43 +406,78 @@ animation = &"idle_front"
 autoplay = "idle_front"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -9)
+position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_yewv4")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "entity", "animated_sprite")]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_dyp2m")
 initial_state = NodePath("Idle")
-entity = NodePath("..")
-animated_sprite = NodePath("../PlayerAnim")
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
-script = ExtResource("4_atpat")
+script = ExtResource("5_eojnx")
+player = NodePath("../..")
+
+[node name="AnimHandler" type="Node" parent="StateMachine/Idle"]
+script = ExtResource("6_qgnko")
 animations = Dictionary[String, String]({
 "back": "idle_back",
 "front": "idle_front",
 "left": "idle_left",
 "right": "idle_right"
 })
-player = NodePath("../..")
+animated_sprite_path = NodePath("../../../PlayerAnim")
 
 [node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
-script = ExtResource("5_atpat")
+script = ExtResource("7_7vyk4")
+player = NodePath("../..")
+
+[node name="AnimHandler" type="Node" parent="StateMachine/Walk"]
+script = ExtResource("6_qgnko")
 animations = Dictionary[String, String]({
 "back": "walk_back",
 "front": "walk_front",
 "left": "walk_left",
 "right": "walk_right"
 })
-player = NodePath("../..")
+animated_sprite_path = NodePath("../../../PlayerAnim")
 
-[node name="Chopping" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
-script = ExtResource("7_eojnx")
+[node name="Chopping" type="Node" parent="StateMachine"]
+script = ExtResource("8_eojnx")
+
+[node name="AnimHandler" type="Node" parent="StateMachine/Chopping"]
+script = ExtResource("6_qgnko")
 animations = Dictionary[String, String]({
 "back": "chopping_back",
 "front": "chopping_front",
 "left": "chopping_left",
 "right": "chopping_right"
 })
-player = NodePath("../..")
+animated_sprite_path = NodePath("../../../PlayerAnim")
+
+[node name="Tilling" type="Node" parent="StateMachine"]
+script = ExtResource("8_eojnx")
+
+[node name="AnimHandler" type="Node" parent="StateMachine/Tilling"]
+script = ExtResource("6_qgnko")
+animations = Dictionary[String, String]({
+"back": "tilling_back",
+"front": "tilling_front",
+"left": "tilling_left",
+"right": "tilling_right"
+})
+animated_sprite_path = NodePath("../../../PlayerAnim")
+
+[node name="Watering" type="Node" parent="StateMachine"]
+script = ExtResource("8_eojnx")
+
+[node name="AnimHandler" type="Node" parent="StateMachine/Watering"]
+script = ExtResource("6_qgnko")
+animations = Dictionary[String, String]({
+"back": "watering_back",
+"front": "watering_front",
+"left": "watering_left",
+"right": "watering_right"
+})
+animated_sprite_path = NodePath("../../../PlayerAnim")
 
 [connection signal="animation_finished" from="PlayerAnim" to="." method="_on_anim_finished"]

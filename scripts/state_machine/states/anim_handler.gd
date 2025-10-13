@@ -1,28 +1,18 @@
 class_name AnimHandler
-extends State
+extends Node
 
 @export var animations: Dictionary[String, String]
-@export var player: Player
+@export var animated_sprite_path: NodePath
 
+var animated_sprite: AnimatedSprite2D = null
 var dir: Vector2i
 var not_zero_dir: Vector2i
-var isTool: bool = false
 
-func AH_on_process(_delta: float) -> void:
-	pass
+func _enter() -> void:
+	animated_sprite = get_node(animated_sprite_path) as AnimatedSprite2D
+	print(animated_sprite)
 
-func AH_on_physics_process(_delta: float) -> void:
-	pass
-
-func AH_on_next_transitions() -> void:
-	if !animated_sprite.is_playing():
-		if isTool:
-			transition.emit("Idle", not_zero_dir, null)
-
-func AH_on_enter() -> void:
-	pass
-
-func AH_on_exit() -> void:
+func _exit() -> void:
 	animated_sprite.stop()
 
 func change_dir() -> void:

@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://dcaqtdvfufe8g" path="res://tilesets/game_tile_set.tres" id="1_8sshe"]
 [ext_resource type="PackedScene" uid="uid://dlbu38rxtt0po" path="res://scenes/characters/player.tscn" id="2_8lwbv"]
 
-[node name="TileMap" type="Node2D"]
+[node name="PlayerScene" type="Node2D"]
 
 [node name="GameTileMap" type="Node2D" parent="."]
 texture_filter = 1
@@ -18,4 +18,4 @@ tile_set = ExtResource("1_8sshe")
 
 [node name="Player" parent="." instance=ExtResource("2_8lwbv")]
 position = Vector2(349, 149)
-current_tool = 1
+current_tool = 4
