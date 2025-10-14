@@ -1,34 +1,34 @@
-[gd_scene load_steps=16 format=3 uid="uid://uafu7foy3x4q"]
+[gd_scene load_steps=16 format=3 uid="uid://btiac564gn5w4"]
 
-[ext_resource type="Shader" uid="uid://dbktnqm2oop2y" path="res://scenes/objects/trees/resources/tree_shake.gdshader" id="1_gum2g"]
-[ext_resource type="Texture2D" uid="uid://ooxhg638aa2h" path="res://assets/gameplay/objects/basic_grass_biom_things.png" id="1_y5kx5"]
-[ext_resource type="Script" uid="uid://c4ameihmx33h1" path="res://scripts/objects/tree.gd" id="2_p2fd6"]
-[ext_resource type="PackedScene" uid="uid://dckr1swo3lbpl" path="res://scenes/components/hurt.tscn" id="2_tsjaw"]
-[ext_resource type="PackedScene" uid="uid://bdnysaag5jqin" path="res://scenes/objects/trees/log.tscn" id="3_3c4uq"]
-[ext_resource type="PackedScene" uid="uid://cdue5mt8igwsy" path="res://scenes/components/damage.tscn" id="3_ouccj"]
-[ext_resource type="Texture2D" uid="uid://btb7hs3uunbp5" path="res://assets/ui/Sprite sheets/UI Settings Buttons.png" id="5_m3r6k"]
+[ext_resource type="Shader" uid="uid://dbktnqm2oop2y" path="res://scenes/objects/trees/resources/tree_shake.gdshader" id="1_h2qgq"]
+[ext_resource type="Texture2D" uid="uid://ooxhg638aa2h" path="res://assets/gameplay/objects/basic_grass_biom_things.png" id="2_fob2m"]
+[ext_resource type="Script" uid="uid://c4ameihmx33h1" path="res://scripts/objects/tree.gd" id="3_yrcuq"]
+[ext_resource type="PackedScene" uid="uid://c01mea5iehft5" path="res://scenes/objects/res_rock.tscn" id="4_tvljo"]
+[ext_resource type="PackedScene" uid="uid://dckr1swo3lbpl" path="res://scenes/components/hurt.tscn" id="5_uynwe"]
+[ext_resource type="PackedScene" uid="uid://cdue5mt8igwsy" path="res://scenes/components/damage.tscn" id="6_0s11j"]
+[ext_resource type="Texture2D" uid="uid://btb7hs3uunbp5" path="res://assets/ui/Sprite sheets/UI Settings Buttons.png" id="7_7lgaq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_idbbm"]
 resource_local_to_scene = true
-shader = ExtResource("1_gum2g")
+shader = ExtResource("1_h2qgq")
 shader_parameter/shake_intensity = 0.0
-shader_parameter/shake_speed = 10.000000475
+shader_parameter/shake_speed = 4.0
 shader_parameter/sway_scale = 0.25
 shader_parameter/attenuation_power = 2.0
 shader_parameter/invert_uv = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tsjaw"]
-atlas = ExtResource("1_y5kx5")
-region = Rect2(0, 0, 16, 32)
+atlas = ExtResource("2_fob2m")
+region = Rect2(128, 18, 16, 12)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3c4uq"]
-radius = 4.0
+radius = 7.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ouccj"]
-size = Vector2(8, 17)
+size = Vector2(14, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3c4uq"]
-atlas = ExtResource("5_m3r6k")
+atlas = ExtResource("7_7lgaq")
 region = Rect2(2, 121, 28, 14)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gum2g"]
@@ -36,36 +36,35 @@ texture = SubResource("AtlasTexture_3c4uq")
 axis_stretch_horizontal = 2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m3r6k"]
-atlas = ExtResource("5_m3r6k")
+atlas = ExtResource("7_7lgaq")
 region = Rect2(34, 121, 28, 14)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3c4uq"]
 texture = SubResource("AtlasTexture_m3r6k")
 axis_stretch_horizontal = 1
 
-[node name="Tree" type="Sprite2D"]
+[node name="Rock" type="Sprite2D"]
 material = SubResource("ShaderMaterial_idbbm")
-position = Vector2(0, -11)
+position = Vector2(0, -5)
 texture = SubResource("AtlasTexture_tsjaw")
-script = ExtResource("2_p2fd6")
-resource_scene = ExtResource("3_3c4uq")
+script = ExtResource("3_yrcuq")
+resource_scene = ExtResource("4_tvljo")
 shake_time = 0.5
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 8)
 shape = SubResource("CircleShape2D_3c4uq")
 
-[node name="Hurt" parent="." instance=ExtResource("2_tsjaw")]
+[node name="Hurt" parent="." instance=ExtResource("5_uynwe")]
 tool = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurt"]
-position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_ouccj")
 debug_color = Color(0.89669967, 0.34279758, 1, 0.41960785)
 
-[node name="Damage" parent="." instance=ExtResource("3_ouccj")]
+[node name="Damage" parent="." instance=ExtResource("6_0s11j")]
+health = 10
 
 [node name="Control" type="Control" parent="."]
 z_index = 1
@@ -81,7 +80,10 @@ size_flags_vertical = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="Health" type="ProgressBar" parent="Control"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.3478261
+anchor_bottom = 0.3478261
 offset_left = 11.0
 offset_top = 8.0
 offset_right = 29.0

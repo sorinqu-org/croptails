@@ -1,7 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://4a5wgg4jitjk"]
+[gd_scene load_steps=7 format=3 uid="uid://4a5wgg4jitjk"]
 
 [ext_resource type="PackedScene" uid="uid://uafu7foy3x4q" path="res://scenes/objects/trees/tree.tscn" id="1_5lg7a"]
 [ext_resource type="Texture2D" uid="uid://co7b5j3qgwkxj" path="res://scenes/objects/trees/resources/big_tree.tres" id="2_03qij"]
+[ext_resource type="Shader" uid="uid://dbktnqm2oop2y" path="res://scenes/objects/trees/resources/tree_shake.gdshader" id="2_hd616"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q7tvr"]
+resource_local_to_scene = true
+shader = ExtResource("2_hd616")
+shader_parameter/shake_intensity = 0.0
+shader_parameter/shake_speed = 10.000000475
+shader_parameter/sway_scale = 0.25
+shader_parameter/attenuation_power = 2.0
+shader_parameter/invert_uv = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_03qij"]
 radius = 5.0
@@ -10,7 +20,7 @@ radius = 5.0
 size = Vector2(10, 21.25)
 
 [node name="BigTree" instance=ExtResource("1_5lg7a")]
-position = Vector2(0, -14)
+material = SubResource("ShaderMaterial_q7tvr")
 texture = ExtResource("2_03qij")
 
 [node name="CollisionShape2D" parent="StaticBody2D" index="0"]

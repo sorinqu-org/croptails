@@ -20,6 +20,10 @@ tile_set = ExtResource("1_ccqxi")
 tile_map_data = PackedByteArray("AAALAAYAAwAAAAAAAQAMAAgAAwAAAAAAAQAPAAYAAwAAAAAAAQAQAAgAAwAAAAAAAwAHAAgAAwAAAAAAAwAJAAUAAwAAAAAAAwA=")
 tile_set = ExtResource("1_ccqxi")
 
+[node name="Rocks" type="TileMapLayer" parent="GameTileMap"]
+tile_map_data = PackedByteArray("AAAQAAoAAwAAAAAAAgAbAAgAAwAAAAAAAgAZAAoAAwAAAAAAAgA=")
+tile_set = ExtResource("1_ccqxi")
+
 [node name="Player" parent="." instance=ExtResource("2_cg1ok")]
 position = Vector2(349, 149)
 current_tool = 1
