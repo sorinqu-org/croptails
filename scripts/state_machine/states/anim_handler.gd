@@ -19,7 +19,6 @@ var not_zero_dir: Vector2i
 
 func _enter() -> void:
 	animated_sprite = get_node(animated_sprite_path) as AnimatedSprite2D
-	print(animated_sprite)
 
 func _exit() -> void:
 	animated_sprite.stop()

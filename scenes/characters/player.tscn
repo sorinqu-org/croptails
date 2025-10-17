@@ -501,11 +501,4 @@ position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_7vyk4")
 debug_color = Color(0.66316015, 0.3171676, 1, 0.41960785)
 
-[node name="Camera" type="Camera2D" parent="."]
-limit_enabled = false
-limit_left = 0
-limit_smoothed = true
-position_smoothing_speed = 8.0
-rotation_smoothing_speed = 8.0
-
 [connection signal="animation_finished" from="PlayerAnim" to="." method="_on_anim_finished"]
