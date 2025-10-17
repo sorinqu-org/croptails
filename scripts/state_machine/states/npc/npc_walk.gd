@@ -21,18 +21,6 @@ func character_setup() -> void:
 
 func set_move_target() -> void:    
     randomize()
-    # var radius: float = 300.0
-
-    # var target_pos: Vector2 = character.global_position + Vector2(
-    #     randf_range(-radius, radius),
-    #     randf_range(-radius, radius)
-    # )
-    
-    # while target_pos.distance_to(character.global_position) < 50.0:
-    #     target_pos = character.global_position + Vector2(
-    #         randf_range(-radius, radius),
-    #         randf_range(-radius, radius)
-    #     )
     var target_pos: Vector2 = NavigationServer2D.map_get_random_point(
         nav_agent.get_navigation_map(),
         nav_agent.navigation_layers,
@@ -74,6 +62,7 @@ func on_safe_velocity_computed(safe_velocity: Vector2) -> void:
 func enter() -> void:
     anim_sprite.play("walk")
     character.current_walk_cycle = 0
+    set_move_target()
 
 func exit() -> void:
     anim_sprite.stop()
