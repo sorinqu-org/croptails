@@ -41,7 +41,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 2.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -58,7 +58,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 4.0
+"speed": 3.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nxyq4"]
@@ -67,13 +67,16 @@ radius = 4.0
 [node name="Chicken" type="CharacterBody2D"]
 collision_layer = 64
 script = ExtResource("1_rgun1")
+min_walk_cycle = 1
+max_walk_cycle = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_qkxpq")
-animation = &"idle"
+animation = &"walk"
 autoplay = "idle"
+frame_progress = 0.7874917
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
@@ -84,11 +87,10 @@ path_desired_distance = 10.0
 path_postprocessing = 1
 avoidance_enabled = true
 radius = 5.0
-debug_enabled = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_yh4hm")
-initial_state = NodePath("Idle")
+initial_state = NodePath("Walk")
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "anim_sprite")]
 script = ExtResource("3_yh4hm")

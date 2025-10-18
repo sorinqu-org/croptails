@@ -19,22 +19,22 @@ func character_setup() -> void:
     await get_tree().physics_frame
     set_move_target()
 
-func set_move_target() -> void:    
+func set_move_target() -> void:
     randomize()
     var target_pos: Vector2 = NavigationServer2D.map_get_random_point(
         nav_agent.get_navigation_map(),
         nav_agent.navigation_layers,
         false)
-    
+
     nav_agent.target_position = target_pos
     speed = randf_range(min_speed, max_speed)
 
 func physics_process(_delta: float) -> void:
 
-    if nav_agent.is_navigation_finished():    
-        character.current_walk_cycle += 1        
+    if nav_agent.is_navigation_finished():
+        character.current_walk_cycle += 1
         set_move_target()
-        next_transition()       
+        next_transition()
         return
 
     var target_pos: Vector2 = nav_agent.get_next_path_position()
