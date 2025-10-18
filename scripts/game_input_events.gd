@@ -24,3 +24,9 @@ static func is_move() -> bool:
 # FIXME: Change tools system
 static func get_hit_input() -> bool:
 	return Input.is_action_just_pressed("hit")
+
+static func get_tool_input() -> bool:
+	return Input.is_action_pressed("select_tool")
+
+static func unselect_input(event: InputEvent) -> bool:
+	return event.is_action("unselect")
