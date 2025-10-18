@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://dtf33i7a88mk1"]
 
 [ext_resource type="Texture2D" uid="uid://dp0ljtdgrqr8k" path="res://assets/gameplay/characters/free_chicken_sprites.png" id="1_nxyq4"]
-[ext_resource type="Script" uid="uid://ik5bhrqpw40l" path="res://scripts/characters/chicken.gd" id="1_rgun1"]
+[ext_resource type="Script" uid="uid://drpo26ut6bsxs" path="res://scripts/characters/non_playable_character.gd" id="1_rgun1"]
 [ext_resource type="Script" uid="uid://otgoaba13p3y" path="res://scripts/state_machine/state_machine.gd" id="2_yh4hm"]
 [ext_resource type="Script" uid="uid://bstss2c4iyu7b" path="res://scripts/state_machine/states/npc/npc_idle.gd" id="3_yh4hm"]
 [ext_resource type="Script" uid="uid://ba2mjwvhr6tmf" path="res://scripts/state_machine/states/npc/npc_walk.gd" id="4_qkxpq"]
@@ -68,6 +68,7 @@ radius = 4.0
 script = ExtResource("1_rgun1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_qkxpq")
 animation = &"idle"
