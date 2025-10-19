@@ -14,6 +14,7 @@
 y_sort_enabled = true
 
 [node name="GameTileMap" type="Node2D" parent="."]
+y_sort_enabled = true
 texture_filter = 1
 
 [node name="Water" type="TileMapLayer" parent="GameTileMap"]
@@ -25,10 +26,12 @@ tile_map_data = PackedByteArray("AAAGAAQAAQABAAEAAAAHAAQAAQABAAEAAAAHAAUAAQABAAE
 tile_set = ExtResource("1_ccqxi")
 
 [node name="Trees" type="TileMapLayer" parent="GameTileMap"]
+y_sort_enabled = true
 tile_map_data = PackedByteArray("AAALAAYAAwAAAAAAAQAMAAgAAwAAAAAAAQAPAAYAAwAAAAAAAQAQAAgAAwAAAAAAAwAHAAgAAwAAAAAAAwAJAAUAAwAAAAAAAwA=")
 tile_set = ExtResource("1_ccqxi")
 
 [node name="Rocks" type="TileMapLayer" parent="GameTileMap"]
+y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAQAAoAAwAAAAAAAgAbAAgAAwAAAAAAAgAZAAoAAwAAAAAAAgA=")
 tile_set = ExtResource("1_ccqxi")
 
@@ -37,6 +40,13 @@ position = Vector2(349, 149)
 current_tool = 1
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+limit_enabled = false
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.15
+drag_right_margin = 0.15
+drag_bottom_margin = 0.12
+editor_draw_drag_margin = true
 
 [node name="Log" parent="." instance=ExtResource("3_xpy3j")]
 position = Vector2(218, 230)
