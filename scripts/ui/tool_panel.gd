@@ -18,6 +18,11 @@ func _ready() -> void:
 
 func on_tool_updated(tool: Player.Tools):
 	if tool != Player.Tools.None:
+		if tool > buttons.size() - 1:
+			player.update_tool.emit(Player.Tools.None)
+			push_error("tool index out of range")
+			return
+
 		var button = buttons[tool-1]
 		button.grab_focus()
 		focused_button = button
