@@ -1,0 +1,7 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://bvu8sq76356rm"]
+
+[ext_resource type="FontFile" uid="uid://b33265rvcimye" path="res://assets/ui/fonts/8_bit_party.ttf" id="1_o87yh"]
+
+[resource]
+base_font = ExtResource("1_o87yh")
+spacing_bottom = -1

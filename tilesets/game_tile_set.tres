@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dbvin55rkpau8" path="res://scenes/houses/small_house.tscn" id="4_uk42g"]
 [ext_resource type="PackedScene" uid="uid://uafu7foy3x4q" path="res://scenes/objects/trees/tree.tscn" id="5_yewih"]
 [ext_resource type="PackedScene" uid="uid://4a5wgg4jitjk" path="res://scenes/objects/trees/big_tree.tscn" id="6_8yb5x"]
-[ext_resource type="PackedScene" uid="uid://btiac564gn5w4" path="res://scenes/objects/rock.tscn" id="6_xa2g7"]
+[ext_resource type="PackedScene" uid="uid://btiac564gn5w4" path="res://scenes/objects/rocks/rock.tscn" id="6_xa2g7"]
 [ext_resource type="Texture2D" uid="uid://cjfmxgur8vbpv" path="res://assets/gameplay/tilesets/fences.png" id="8_jutaf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tkbyn"]

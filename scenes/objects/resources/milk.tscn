@@ -1,0 +1,119 @@
+[gd_scene load_steps=8 format=3 uid="uid://be6ur60thmfc4"]
+
+[ext_resource type="Texture2D" uid="uid://code2mpcbicko" path="res://assets/gameplay/objects/simple_milk_and_grass_item.png" id="1_1rn6y"]
+[ext_resource type="PackedScene" uid="uid://cm2orfm0n74x2" path="res://scenes/components/collectable.tscn" id="2_ki821"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ki821"]
+atlas = ExtResource("1_1rn6y")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s5rqd"]
+radius = 7.0
+
+[sub_resource type="Animation" id="Animation_s5rqd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Milk:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -18)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Milk:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Collectable/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_e2a05"]
+resource_name = "spawn"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Milk:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -10), Vector2(0, -1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Milk:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Collectable/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s5rqd"]
+_data = {
+&"RESET": SubResource("Animation_s5rqd"),
+&"spawn": SubResource("Animation_e2a05")
+}
+
+[node name="Milk" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Milk" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -18)
+scale = Vector2(1e-05, 1e-05)
+texture = SubResource("AtlasTexture_ki821")
+
+[node name="Collectable" parent="." instance=ExtResource("2_ki821")]
+resource_type = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable"]
+shape = SubResource("CircleShape2D_s5rqd")
+disabled = true
+debug_color = Color(2.4065375e-07, 0.6293626, 0.48648757, 0.41960785)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_s5rqd")
+}
+autoplay = "spawn"

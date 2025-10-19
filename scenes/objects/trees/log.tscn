@@ -1,14 +1,14 @@
 [gd_scene load_steps=8 format=3 uid="uid://bdnysaag5jqin"]
 
-[ext_resource type="Texture2D" uid="uid://ooxhg638aa2h" path="res://assets/gameplay/objects/basic_grass_biom_things.png" id="1_bcctm"]
+[ext_resource type="Texture2D" uid="uid://pmcwv28j2203" path="res://assets/gameplay/objects/Basic_tools_and_meterials.png" id="1_e2a05"]
 [ext_resource type="PackedScene" uid="uid://cm2orfm0n74x2" path="res://scenes/components/collectable.tscn" id="2_e2a05"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e2a05"]
-atlas = ExtResource("1_bcctm")
-region = Rect2(80, 35, 16, 10)
+atlas = ExtResource("1_e2a05")
+region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s5rqd"]
-radius = 7.0
+radius = 6.0
 
 [sub_resource type="Animation" id="Animation_s5rqd"]
 length = 0.001
@@ -96,8 +96,10 @@ _data = {
 }
 
 [node name="Log" type="Node2D"]
+y_sort_enabled = true
 
 [node name="Log" type="Sprite2D" parent="."]
+y_sort_enabled = true
 position = Vector2(0, -18)
 scale = Vector2(1e-05, 1e-05)
 texture = SubResource("AtlasTexture_e2a05")

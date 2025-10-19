@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://dlbu38rxtt0po"]
+[gd_scene load_steps=54 format=3 uid="uid://dlbu38rxtt0po"]
 
 [ext_resource type="Script" uid="uid://dnett1g7e2dsk" path="res://scripts/player/player.gd" id="1_6eyoc"]
 [ext_resource type="Texture2D" uid="uid://bmarq4qqx6143" path="res://assets/gameplay/characters/basic_charakter_spritesheet.png" id="1_rp718"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cd5akhismud23" path="res://scripts/state_machine/states/player/walk.gd" id="7_7vyk4"]
 [ext_resource type="Script" uid="uid://bpif45vag0chf" path="res://scripts/state_machine/states/player/tool.gd" id="8_eojnx"]
 [ext_resource type="PackedScene" uid="uid://dw3qmjxrvdbcs" path="res://scenes/components/hit.tscn" id="9_qgnko"]
+[ext_resource type="Script" uid="uid://c3ppud58n6del" path="res://scripts/components/inventory_component.gd" id="10_7vyk4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rpnd8"]
 atlas = ExtResource("2_yewv4")
@@ -508,5 +509,8 @@ tool_shape_positions = Dictionary[String, Vector2]({
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_7vyk4")
 debug_color = Color(0.66316015, 0.3171676, 1, 0.41960785)
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("10_7vyk4")
 
 [connection signal="animation_finished" from="PlayerAnim" to="." method="_on_anim_finished"]

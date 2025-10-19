@@ -1,9 +1,17 @@
-[gd_scene load_steps=3 format=4 uid="uid://c6ajf3f3tsjws"]
+[gd_scene load_steps=10 format=4 uid="uid://c6ajf3f3tsjws"]
 
 [ext_resource type="TileSet" uid="uid://dcaqtdvfufe8g" path="res://tilesets/game_tile_set.tres" id="1_ccqxi"]
 [ext_resource type="PackedScene" uid="uid://dlbu38rxtt0po" path="res://scenes/characters/player.tscn" id="2_cg1ok"]
+[ext_resource type="PackedScene" uid="uid://bdnysaag5jqin" path="res://scenes/objects/trees/log.tscn" id="3_xpy3j"]
+[ext_resource type="PackedScene" uid="uid://c01mea5iehft5" path="res://scenes/objects/rocks/res_rock.tscn" id="4_lxygl"]
+[ext_resource type="PackedScene" uid="uid://b4y73p8nm0t5b" path="res://scenes/objects/resources/egg.tscn" id="5_c55ap"]
+[ext_resource type="PackedScene" uid="uid://be6ur60thmfc4" path="res://scenes/objects/resources/milk.tscn" id="6_lxygl"]
+[ext_resource type="PackedScene" uid="uid://dov0het641t0e" path="res://scenes/objects/resources/corn.tscn" id="7_c55ap"]
+[ext_resource type="PackedScene" uid="uid://cfo512adgwktx" path="res://scenes/objects/resources/tomato.tscn" id="8_v71e6"]
+[ext_resource type="PackedScene" uid="uid://d0dhtip02w7f6" path="res://scenes/ui/game_screen.tscn" id="9_aabiw"]
 
 [node name="ObjetcsAndTrees" type="Node2D"]
+y_sort_enabled = true
 
 [node name="GameTileMap" type="Node2D" parent="."]
 texture_filter = 1
@@ -27,3 +35,25 @@ tile_set = ExtResource("1_ccqxi")
 [node name="Player" parent="." instance=ExtResource("2_cg1ok")]
 position = Vector2(349, 149)
 current_tool = 1
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Log" parent="." instance=ExtResource("3_xpy3j")]
+position = Vector2(218, 230)
+
+[node name="RockRes" parent="." instance=ExtResource("4_lxygl")]
+position = Vector2(242, 231)
+
+[node name="Egg" parent="." instance=ExtResource("5_c55ap")]
+position = Vector2(265, 232)
+
+[node name="Milk" parent="." instance=ExtResource("6_lxygl")]
+position = Vector2(292, 232)
+
+[node name="Corn" parent="." instance=ExtResource("7_c55ap")]
+position = Vector2(217, 256)
+
+[node name="Tomato" parent="." instance=ExtResource("8_v71e6")]
+position = Vector2(242, 258)
+
+[node name="GameScreen" parent="." instance=ExtResource("9_aabiw")]
