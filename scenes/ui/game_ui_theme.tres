@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=21 format=3 uid="uid://ljcck66th0xd"]
+[gd_resource type="Theme" load_steps=22 format=3 uid="uid://ljcck66th0xd"]
 
 [ext_resource type="Texture2D" uid="uid://cq007i6iu2rfg" path="res://assets/ui/Sprite sheets/Sprite sheet for Basic Pack.png" id="1_nhbk8"]
 [ext_resource type="FontVariation" uid="uid://bvu8sq76356rm" path="res://assets/ui/fonts/8_bit_font_variation.tres" id="2_68i34"]
@@ -27,6 +27,9 @@ texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 axis_stretch_horizontal = 2
 region_rect = Rect2(0, 0, 26, 26)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_68i34"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cqa1q"]
 load_path = "res://.godot/imported/Sprite sheet for Basic Pack.png-33b90ac79adba22a3359540a0534e2bb.ctex"
@@ -100,6 +103,8 @@ DarkWoodPanel/base_type = &"PanelContainer"
 DarkWoodPanel/styles/panel = SubResource("StyleBoxTexture_mtjyl")
 InventoryItemPanel/base_type = &"PanelContainer"
 InventoryItemPanel/styles/panel = SubResource("StyleBoxTexture_3405b")
+LoadingPanel/base_type = &"PanelContainer"
+LoadingPanel/styles/panel = SubResource("StyleBoxFlat_68i34")
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10

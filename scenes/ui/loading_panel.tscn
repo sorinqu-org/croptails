@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://ib2ssuuxfw1k"]
+
+[ext_resource type="Script" uid="uid://boyxt3dbsb7e5" path="res://scripts/yandex_sdk/yandex_sdk_initializer.gd" id="1_gaarg"]
+[ext_resource type="Theme" uid="uid://ljcck66th0xd" path="res://scenes/ui/game_ui_theme.tres" id="1_hubhh"]
+[ext_resource type="SpriteFrames" uid="uid://dpeysuy1shrp2" path="res://assets/ui/loading/three_dots.gif" id="2_gqoxm"]
+[ext_resource type="PackedScene" uid="uid://c6ajf3f3tsjws" path="res://scenes/prototype/objects_and_trees.tscn" id="2_sh6gk"]
+
+[node name="LoadingCanvas" type="CanvasLayer"]
+script = ExtResource("1_gaarg")
+menu_scene = ExtResource("2_sh6gk")
+
+[node name="LoadingPanel" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hubhh")
+theme_type_variation = &"LoadingPanel"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LoadingPanel"]
+position = Vector2(320, 180)
+sprite_frames = ExtResource("2_gqoxm")
+animation = &"gif"
+autoplay = "gif"
+frame = 4
+frame_progress = 0.6027897

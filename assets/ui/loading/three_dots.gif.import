@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://dpeysuy1shrp2"
+path="res://.godot/imported/three_dots.gif-41d185a51bbd08ea28c4923cb9dc0b84.tres"
+
+[deps]
+
+source_file="res://assets/ui/loading/three_dots.gif"
+dest_files=["res://.godot/imported/three_dots.gif-41d185a51bbd08ea28c4923cb9dc0b84.tres"]
+
+[params]
+
+frames_per_second=30

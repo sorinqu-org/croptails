@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://bmb110q0d3u52"
+path="res://.godot/imported/bitmask_references_gif.gif-f17cc1e97cae180c75dac5f6b51b2ba3.tres"
+
+[deps]
+
+source_file="res://assets/gameplay/tilesets/bitmask_references_gif.gif"
+dest_files=["res://.godot/imported/bitmask_references_gif.gif-f17cc1e97cae180c75dac5f6b51b2ba3.tres"]
+
+[params]
+
+frames_per_second=30
